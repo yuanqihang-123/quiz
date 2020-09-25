@@ -16,7 +16,8 @@ public class ProductService {
 
     public List<ProductEntity> getAllProducts() {
         final List<ProductEntity> products = new LinkedList<>();
-        productRepository.findAll().forEach(products::add);
+        Iterable<ProductEntity> all = productRepository.findAll();
+                all.forEach(products::add);
         return products;
     }
 }

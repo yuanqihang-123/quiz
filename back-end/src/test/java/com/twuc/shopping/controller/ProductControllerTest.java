@@ -36,4 +36,5 @@ class ProductControllerTest {
         assertEquals(all.get(0).getPrice(), 1000);
         assertEquals(all.get(0).getUnit(), "部");
     }
+
 }

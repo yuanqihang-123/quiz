@@ -29,9 +29,17 @@ class OrderControllerTest {
 
     @Test
     public void getAllProducts() throws Exception {
-        mockMvc.perform(post("/order/1"))
-                .andExpect(status().isOk());
+        mockMvc.perform(get("/order/1"))
+                .andExpect(status().isCreated());
         OrderEntity orderEntity = orderRepository.findById(6).get();
+        assertEquals(orderEntity.getProductEntity().getName(), "手机1");
+    }
+
+    @Test
+    public void getAllOrders() throws Exception {
+        mockMvc.perform(get("/orders"))
+                .andExpect(status().isOk());
+        OrderEntity orderEntity = orderRepository.findById(10).get();
         assertEquals(orderEntity.getProductEntity().getName(), "手机1");
     }
 }

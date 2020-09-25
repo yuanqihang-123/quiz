@@ -1,16 +1,16 @@
 package com.twuc.shopping.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "product")
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,4 +25,14 @@ public class ProductEntity {
 
     @OneToMany(mappedBy = "ProductEntity")
     private List<OrderEntity> orders;
+
+    @JsonIgnore
+    public List<OrderEntity> getOrders() {
+        return orders;
+    }
+
+    @JsonProperty
+    public void setOrders(List<OrderEntity> orders) {
+        this.orders = orders;
+    }
 }
