@@ -23,6 +23,6 @@ public class ProductEntity {
     private String unit;
     private String url;
 
-    @ManyToMany(mappedBy = "ProductEntities")
+    @OneToMany(mappedBy = "ProductEntity")
     private List<OrderEntity> orders;
 }

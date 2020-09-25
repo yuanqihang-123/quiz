@@ -18,14 +18,9 @@ public class OrderEntity {
     @Id
     @GeneratedValue
     private Integer id;
-    private String name;
-    private int price;
-    private int count;
-    private String unit;
 
-    @ManyToMany
-    @JoinTable(name="product_order",joinColumns=@JoinColumn(name="order_id"),
-            inverseJoinColumns=@JoinColumn(name="product_id"))
-    private List<ProductEntity> ProductEntities;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private ProductEntity ProductEntity;
 }
 
