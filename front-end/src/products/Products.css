@@ -1,0 +1,6 @@
+.products_div {
+    width: 1400px;
+    display: flex;
+    padding-left: 100px;
+    padding-top : 50px;
+}
