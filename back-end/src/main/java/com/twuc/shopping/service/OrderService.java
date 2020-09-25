@@ -29,4 +29,8 @@ public class OrderService {
         all.forEach(list::add);
         return list;
     }
+
+    public void delete(int id) {
+        orderRepository.deleteById(id);
+    }
 }

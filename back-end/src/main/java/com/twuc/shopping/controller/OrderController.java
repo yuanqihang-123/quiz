@@ -4,10 +4,7 @@ import com.twuc.shopping.entity.OrderEntity;
 import com.twuc.shopping.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.Order;
 import java.util.List;
@@ -27,5 +24,11 @@ public class OrderController {
     public ResponseEntity getOrders(){
        List<OrderEntity> orders = orderService.getAll();
         return ResponseEntity.ok(orders);
+    }
+
+    @DeleteMapping("/order")
+    public ResponseEntity getOrders(@RequestParam int id){
+       orderService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
