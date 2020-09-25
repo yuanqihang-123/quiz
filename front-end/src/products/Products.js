@@ -8,23 +8,28 @@ class Products extends Component {
         products: []
     };
 
-    handleClick = (product) => {
+    handleClick = async (product) => {
+        const id = product.id;
         //发送请求到后端，添加商品到订单
-    }
+        const response = await fetch('http://localhost:8080/order/' + id);
+        if (response.status == 201) {
+            alert("创建成功！")
+        }
+    };
 
     async componentDidMount() {
         const response = await fetch('http://localhost:8080/products');
         const json = await response.json();
         this.setState({
-            products:json,
+            products: json,
         })
-    }
+    };
 
     render() {
         return (
             <div className="products_div">
                 {
-                    this.state.products.map((item,index)=>{
+                    this.state.products.map((item, index) => {
                         return <Product
                             key={index}
                             product={item}
