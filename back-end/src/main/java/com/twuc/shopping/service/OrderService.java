@@ -17,11 +17,12 @@ public class OrderService {
     OrderRepository orderRepository;
     @Autowired
     ProductRepository productRepository;
-//    public void addOrder(Integer id) {
-//        ProductEntity productEntity = productRepository.findById(id).get();
-//        OrderEntity build = OrderEntity.builder().ProductEntity(productEntity).build();
-//        orderRepository.save(build);
-//    }
+    public void addOrder(Integer id) {
+        ProductEntity productEntity = productRepository.findById(id).get();
+        OrderEntity orderEntity = orderRepository.findById(1).get();
+        orderEntity.getProducts().add(productEntity);
+        orderRepository.save(orderEntity);
+    }
 
     public List<OrderEntity> getAll() {
         final List<OrderEntity> list = new LinkedList<>();

@@ -26,16 +26,9 @@ public class ProductEntity {
 //    @OneToMany(mappedBy = "ProductEntity")
 //    private List<OrderEntity> orders;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "products")
     public List<OrderEntity> orders;
 
-    @JsonIgnore
-    public List<OrderEntity> getOrders() {
-        return orders;
-    }
 
-    @JsonProperty
-    public void setOrders(List<OrderEntity> orders) {
-        this.orders = orders;
-    }
 }

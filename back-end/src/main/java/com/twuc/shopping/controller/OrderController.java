@@ -14,11 +14,11 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-//    @GetMapping("/order/{id}")
-//    public ResponseEntity addProductToOrder(@PathVariable Integer id){
-//        orderService.addOrder(id);
-//        return ResponseEntity.created(null).build();
-//    }
+    @GetMapping("/order/{id}")
+    public ResponseEntity addProductToOrder(@PathVariable Integer id){
+        orderService.addOrder(id);
+        return ResponseEntity.created(null).build();
+    }
 
     @GetMapping("/orders")
     public ResponseEntity getOrders(){

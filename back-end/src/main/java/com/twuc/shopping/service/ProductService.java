@@ -20,4 +20,13 @@ public class ProductService {
                 all.forEach(products::add);
         return products;
     }
+
+    public String save(ProductEntity productEntity) {
+        List<ProductEntity> products = productRepository.findByName(productEntity.getName());
+        if(products.size()>0){
+            return "repeat";
+        }
+        ProductEntity save = productRepository.save(productEntity);
+        return "success";
+    }
 }
