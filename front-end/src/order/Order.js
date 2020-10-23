@@ -9,7 +9,7 @@ class Order extends Component {
 
     handleClick = async (id) => {
         const response = await fetch('http://localhost:8080/order?id=1');
-        if (response.status == 204) {
+        if (response.status === 204) {
             alert("删除成功成功！")
         }
     };
@@ -17,6 +17,7 @@ class Order extends Component {
     async componentDidMount() {
         const response = await fetch('http://localhost:8080/orders');
         const json = await response.json();
+
         this.setState({
             Orders: json,
         })
@@ -34,13 +35,15 @@ class Order extends Component {
                 </div>
                 {
                     this.state.Orders.map((item, index) => {
+                        return item.products.map((product,index) =>{
                         return <div key={index}>
-                            <input type='button' readOnly value={item.ProductEntity.name} />
-                            <input type='button' readOnly value={item.ProductEntity.price} />
-                            <input type='button' readOnly value={item.ProductEntity.price} />
-                            <input type='button' readOnly value={item.ProductEntity.unit} />
-                            <input type='button' readOnly onClick={()=> this.handleClick(item.id)} value="删除"/>
+                            <input type='button' readOnly value={product.name} />
+                            <input type='button' readOnly value={product.price} />
+                            <input type='button' readOnly value={product.price} />
+                            <input type='button' readOnly value={product.unit} />
+                            <input type='button' readOnly onClick={()=> this.handleClick(product.id)} value="删除"/>
                         </div>
+                        })
                     })
                 }
             </div>
@@ -48,4 +51,4 @@ class Order extends Component {
     }
 }
 
-export default Products;
+export default Order;

@@ -20,6 +20,7 @@ class Products extends Component {
     async componentDidMount() {
         const response = await fetch('http://localhost:8080/products');
         const json = await response.json();
+        console.log(json)
         this.setState({
             products: json,
         })
