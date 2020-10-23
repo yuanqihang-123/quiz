@@ -23,8 +23,11 @@ public class ProductEntity {
     private String unit;
     private String url;
 
-    @OneToMany(mappedBy = "ProductEntity")
-    private List<OrderEntity> orders;
+//    @OneToMany(mappedBy = "ProductEntity")
+//    private List<OrderEntity> orders;
+
+    @ManyToMany(mappedBy = "products")
+    public List<OrderEntity> orders;
 
     @JsonIgnore
     public List<OrderEntity> getOrders() {

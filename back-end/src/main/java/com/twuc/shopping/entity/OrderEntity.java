@@ -17,8 +17,14 @@ public class OrderEntity {
     @GeneratedValue
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private ProductEntity ProductEntity;
+//    @ManyToOne
+//    @JoinColumn(name = "product_id")
+//    private ProductEntity ProductEntity;
+
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinTable(name = "order_product",
+            joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")})
+    private List<ProductEntity> products;
 }
 
