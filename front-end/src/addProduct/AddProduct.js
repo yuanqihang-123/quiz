@@ -61,7 +61,6 @@ class AddProduct extends Component {
                 <input type="text" name="url" id="url"/>
                 <br/>
                 <button type="submit" >确定</button>
-                {/*<input type="submit" value="提交" onClick={(event)=>{this.handleClick(event)}}/>*/}
                 </form>
             </div>
         );
